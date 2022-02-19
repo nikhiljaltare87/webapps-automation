@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="AllTestSuite" verbose="2" parallel="tests" thread-count="50">
+
+	<test name="Connectors Test" parallel="classes">
+		<classes>
+			<class name="com.mashery.webapps.HelloWorld">
+				<methods>
+					<include name="welcomeTest" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+</suite>
