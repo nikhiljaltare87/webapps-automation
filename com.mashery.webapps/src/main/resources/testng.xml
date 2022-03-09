@@ -6,7 +6,7 @@
 		<classes>
 			<class name="com.mashery.webapps.HelloWorld">
 				<methods>
-					<include name="welcomeTest" />
+					<include name="verifyBrokenLinksTest" />
 				</methods>
 			</class>
 		</classes>
