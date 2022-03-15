@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="AllTestSuite" verbose="2" parallel="tests" thread-count="50">
+<suite name="AllTestSuite" verbose="2">
+	<listeners>
+		<listener class-name="com.mashery.utilities.TestNGListeners"></listener>
+	</listeners>
 
-	<test name="Connectors Test" parallel="classes">
+	<test name="Chrome Browser Test">
+		<parameter name="iBrowser" value="chrome" />
 		<classes>
 			<class name="com.mashery.webapps.HelloWorld">
 				<methods>
 					<include name="verifyBrokenLinksTest" />
+					<include name="verifyTwitterLogin" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<test name="Firefox Browser Test">
+		<parameter name="iBrowser" value="firefox" />
+		<classes>
+			<class name="com.mashery.webapps.HelloWorld">
+				<methods>
+					<include name="verifyBrokenLinksTest" />
+					<include name="verifyTwitterLogin" />
 				</methods>
 			</class>
 		</classes>

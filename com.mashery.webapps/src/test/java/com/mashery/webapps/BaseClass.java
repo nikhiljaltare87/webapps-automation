@@ -1,34 +1,37 @@
 package com.mashery.webapps;
 
-import java.time.Duration;
-
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.BeforeClass;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
 
 public class BaseClass {
 
 	public WebDriver driver;
+	public ExtentReports reports;
+	public ExtentTest test;
 
-	@BeforeTest
-	public void setup() {
+	@BeforeClass
+	public void setUp() throws Exception {
+		reports = new ExtentReports("./Report/report.html", true);
 
-		WebDriverManager.chromedriver().setup();
-
-		driver = new ChromeDriver();
-
-		driver.manage().window().maximize();
-
-		driver.get("https://www.twitter.com");
-
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 	}
 
-	@AfterTest
-	public void clean() {
+	@AfterMethod
+	public void after_test() {
+
+		reports.endTest(test);
 		driver.quit();
+	}
+
+	@AfterClass
+	public void after_class() {
+
+		reports.flush();
+
 	}
 }
