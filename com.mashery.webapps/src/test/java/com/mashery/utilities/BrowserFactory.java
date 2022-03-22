@@ -12,7 +12,7 @@ public class BrowserFactory {
 
 	static WebDriver driver;
 
-	public static WebDriver browserFactory(String browser, String cName) {
+	public static WebDriver browserFactory(String browser) {
 
 		switch (browser.toLowerCase()) {
 
@@ -28,9 +28,11 @@ public class BrowserFactory {
 			System.out.println("Enter Chrome, Firefox or Safari Browser");
 		}
 
-		driver.get(cName);
-
 		return driver;
+	}
+
+	public static void getURL(String url) {
+		driver.get(url);
 	}
 
 }

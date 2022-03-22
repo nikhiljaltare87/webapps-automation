@@ -27,15 +27,21 @@ public class Utilities {
 			HttpURLConnecton.connect();
 
 			if (HttpURLConnecton.getResponseCode() == 200) {
-				System.out.println("URL " + " - " + aUrl + " -> " + HttpURLConnecton.getResponseCode());
+				// System.out.println("URL " + " - " + aUrl + " -> " +
+				// HttpURLConnecton.getResponseCode());
 				test.log(LogStatus.PASS, "URL " + " - " + aUrl + " -> " + HttpURLConnecton.getResponseCode());
 
 			} else if (HttpURLConnecton.getResponseCode() == HttpURLConnection.HTTP_NOT_FOUND) {
-				System.out.println("URL " + " - " + aUrl + " -> " + HttpURLConnection.HTTP_NOT_FOUND);
+				// System.out.println("URL " + " - " + aUrl + " -> " +
+				// HttpURLConnection.HTTP_NOT_FOUND);
 				test.log(LogStatus.FAIL, "URL " + " - " + aUrl + " -> " + HttpURLConnection.HTTP_NOT_FOUND);
 
-			}
+			} else if (HttpURLConnecton.getResponseCode() == HttpURLConnection.HTTP_CLIENT_TIMEOUT) {
+				// System.out.println("URL " + " - " + aUrl + " -> " +
+				// HttpURLConnection.HTTP_CLIENT_TIMEOUT);
+				test.log(LogStatus.FAIL, "URL " + " - " + aUrl + " -> " + HttpURLConnection.HTTP_CLIENT_TIMEOUT);
 
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

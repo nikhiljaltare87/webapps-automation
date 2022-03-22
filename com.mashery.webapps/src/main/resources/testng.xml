@@ -10,8 +10,9 @@
 		<classes>
 			<class name="com.mashery.webapps.HelloWorld">
 				<methods>
-					<include name="verifyBrokenLinksTest" />
-					<include name="verifyTwitterLogin" />
+					<exclude name="verifyBrokenLinksTest" />
+					<exclude name="verifyTwitterLogin" />
+					<include name="verifyFacebookRegTest" />
 				</methods>
 			</class>
 		</classes>
@@ -21,8 +22,9 @@
 		<classes>
 			<class name="com.mashery.webapps.HelloWorld">
 				<methods>
-					<include name="verifyBrokenLinksTest" />
-					<include name="verifyTwitterLogin" />
+					<exclude name="verifyBrokenLinksTest" />
+					<exclude name="verifyTwitterLogin" />
+					<exclude name="verifyFacebookRegTest" />
 				</methods>
 			</class>
 		</classes>

@@ -7,11 +7,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
-public class Login_Page {
+public class Twitter_Login {
 
 	public WebDriver driver;
 
-	public Login_Page(WebDriver driver) {
+	public Twitter_Login(WebDriver driver) {
 
 		this.driver = driver;
 

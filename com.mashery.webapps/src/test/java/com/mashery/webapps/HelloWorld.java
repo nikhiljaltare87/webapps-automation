@@ -1,14 +1,14 @@
 package com.mashery.webapps;
 
-import java.time.Duration;
 import java.util.List;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import com.mashery.pagefactory.Login_Page;
+
+import com.mashery.pagefactory.Facebook_Login;
+import com.mashery.pagefactory.Twitter_Login;
 import com.mashery.utilities.BrowserFactory;
 import com.mashery.utilities.Utilities;
 import com.relevantcodes.extentreports.LogStatus;
@@ -22,15 +22,11 @@ public class HelloWorld extends BaseClass {
 		String name = new Object() {
 		}.getClass().getEnclosingMethod().getName();
 
-		test = reports.startTest(name + " on " + browser);
+		test = reports.startTest("Started Test: " + name + " on " + browser);
 
-		driver = BrowserFactory.browserFactory(browser, "https://www.twitter.com");
+		BrowserFactory.getURL("https://www.twitter.com");
 
-		driver.manage().window().maximize();
-
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-
-		Login_Page loggg = PageFactory.initElements(driver, Login_Page.class);
+		Twitter_Login loggg = PageFactory.initElements(driver, Twitter_Login.class);
 
 		test.log(LogStatus.INFO, "Performing Login");
 
@@ -47,19 +43,17 @@ public class HelloWorld extends BaseClass {
 		String name = new Object() {
 		}.getClass().getEnclosingMethod().getName();
 
-		test = reports.startTest(name + " on " + browser);
+		test = reports.startTest("Started Test: " + name + " on " + browser);
 
-		driver = BrowserFactory.browserFactory(browser, "https://www.google.com");
-
-		driver.manage().window().maximize();
-
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+		BrowserFactory.getURL("https://www.google.com");
 
 		// Utilities.takesScreenshot(driver, test);
 
 		List<WebElement> lis = driver.findElements(By.tagName("a"));
 
 		int size = lis.size();
+
+		System.out.println("Total Link Count -> " + size);
 
 		test.log(LogStatus.INFO, "Total Link Count -> " + size);
 
@@ -75,4 +69,24 @@ public class HelloWorld extends BaseClass {
 
 		}
 	}
+
+	@Test(priority = 3)
+	@Parameters({ "iBrowser" })
+	public void verifyFacebookRegTest(String browser) {
+
+		String name = new Object() {
+		}.getClass().getEnclosingMethod().getName();
+
+		test = reports.startTest("Started Test: " + name + " on " + browser);
+
+		BrowserFactory.getURL("https://www.facebook.com/reg/");
+
+		Facebook_Login log = PageFactory.initElements(driver, Facebook_Login.class);
+
+		log.registerYourself();
+
+		Utilities.takesScreenshot(driver, test);
+
+	}
+
 }
